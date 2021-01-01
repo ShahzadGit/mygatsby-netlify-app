@@ -1,7 +1,7 @@
 // Docs on event and context https://www.netlify.com/docs/functions/#the-handler-method
 const handler = async (event) => {
   try {
-    const subject = event.queryStringParameters.name || 'Everybody'
+    const subject = event.queryStringParameters.name || 'EveryOne'
     return {
       statusCode: 200,
       body: JSON.stringify({ message: `Hello Once Again ${subject}` }),

@@ -1,16 +1,25 @@
 import React, { useState, useEffect } from "react"
 
 export default function Home() {
-  const [data, setData] = useState("")
+  
+  const [data, setData] = useState([]);
 
-  useEffect(()=>{
-    (async()=>{
+  useEffect(() => {
+    fetch(`/.netlify/functions/hello`)
+      .then(response => response.json())
+      .then(data => setData(data));
+  }, []);
+  
+  /* const [data, setData] = useState("")
+
+  useEffect(() => {
+    (async () => {
       const response = await fetch(".netlify/functions/hello")
-      const data1  = await response.json()
+      const data1 = await response.json()
       setData(data1)
     }
     )()
-  },[])
+  }, []) */
   return (
     <div>Hello world!
       <div>{data.message}</div>
